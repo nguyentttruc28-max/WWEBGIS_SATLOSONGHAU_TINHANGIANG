@@ -1,0 +1,8 @@
+﻿id_road,incident_code,road_type,impact_detail,id_reference
+ROAD001,SLH-2020-001,Quốc lộ 91,Mất khoảng 1/3 mặt đường,REF018
+ROAD002,SLH-2023-002,Đường giao thông nông thôn,Nguy cơ/ảnh hưởng gần tuyến đường,REF004
+ROAD003,SLH-2024-001,Đường giao thông nông thôn,Cách khoảng 20m,REF005
+ROAD004,SLH-2025-002,Đường giao thông,Tuyến đường sụp hoàn toàn,REF009
+ROAD005,SLH-2026-002,Đường giao thông nông thôn,Gần vị trí sạt lở,REF013
+ROAD006,SLH-2026-003,Đường giao thông đầu cồn,Ảnh hưởng trực tiếp,REF014
+ROAD007,SLH-2026-004,Đường giao thông đầu cồn,Ảnh hưởng trực tiếp,REF015

@@ -1,0 +1,5 @@
+﻿id_warning_level,warning_level_name,definition,id_reference
+WARN01,Bình thường,Mức cảnh báo sạt lở bờ sông của chương trình quan trắc An Giang,REF019
+WARN02,Nguy hiểm,Mức cảnh báo sạt lở bờ sông của chương trình quan trắc An Giang,REF019
+WARN03,Đặc biệt nguy hiểm,Mức cảnh báo sạt lở bờ sông của chương trình quan trắc An Giang,REF019
+WARN99,Chưa phân loại,Nguồn sự kiện không công bố mức cảnh báo,REF023

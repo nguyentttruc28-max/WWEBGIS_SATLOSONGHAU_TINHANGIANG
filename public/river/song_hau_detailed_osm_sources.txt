@@ -1,0 +1,9 @@
+LỚP SÔNG HẬU CHI TIẾT – OSM / WATERWAYMAP
+
+Nguồn hình học:
+- WaterwayMap.org, geometry.geojson của Sông Hậu, dựa trên dữ liệu OpenStreetMap.
+- Sông Châu Đốc, Sông Bình Di, Sông Vàm Nao, Rạch Ông Chưởng: geometry.geojson tương ứng trên WaterwayMap.org, dữ liệu nguồn OpenStreetMap.
+
+Hệ tọa độ: WGS 84 / EPSG:4326.
+Mục đích: hiển thị lớp đường sông chi tiết trong WebGIS quản lý sạt lở Sông Hậu, đoạn An Giang.
+Lưu ý: đây là lớp đường tâm/đường thủy từ OSM, KHÔNG phải đường bờ sông, không phải ranh lòng dẫn và không dùng để đo chính xác khoảng cách sạt lở.

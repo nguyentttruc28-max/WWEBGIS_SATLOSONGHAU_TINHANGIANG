@@ -1,0 +1,19 @@
+{
+  "description": "Tọa độ dùng riêng cho trực quan hóa WebGIS khi bản ghi V4.1 không có latitude_reference/longitude_reference. Tọa độ nguồn trong satlo_incident không bị thay đổi. Các tọa độ này là tọa độ đại diện theo địa danh/ấp được công bố trong danh mục địa danh bản đồ An Giang hoặc nguồn tham khảo; không được hiểu là tọa độ đo GPS của từng vụ sạt lở.",
+  "source_note": "Nguồn tham khảo địa danh: Thông tư 17/2017/TT-BTNMT, Danh mục địa danh tỉnh An Giang; một số địa danh dùng tọa độ đã có trong chính bộ V4.1 hoặc nguồn tham khảo công khai được ghi trong README của project.",
+  "coordinates": {
+    "Bình Tân": {"lat": 10.551389, "lng": 105.275833, "label": "tọa độ đại diện ấp Bình Tân"},
+    "Quốc Khánh": {"lat": 10.909167, "lng": 105.078611, "label": "tọa độ đại diện ấp Quốc Khánh"},
+    "Phú Thành": {"lat": 10.918056, "lng": 105.092222, "label": "tọa độ đại diện ấp Phú Thành"},
+    "Vĩnh Phước": {"lat": 10.918056, "lng": 105.092222, "label": "tọa độ đại diện khu vực Phú Thành/Phú Hữu do chưa có GPS riêng cho sự kiện"},
+    "An Thái": {"lat": 10.414722, "lng": 105.455833, "label": "tọa độ đại diện ấp An Thái, Hòa Bình"},
+    "Hòa Lộc và Hòa Hưng 1": {"lat": 10.693557, "lng": 105.196626, "label": "tọa độ theo báo cáo chính thức của sự kiện SLH-2024-002"},
+    "Hòa An": {"lat": 10.671000, "lng": 105.221300, "label": "tọa độ đại diện khu vực Hòa Lạc/Hòa An"},
+    "Mỹ Thuận": {"lat": 10.437222, "lng": 105.417500, "label": "tọa độ đại diện ấp Mỹ Thuận"},
+    "Mỹ Khánh 1": {"lat": 10.420000, "lng": 105.416389, "label": "tọa độ đại diện ấp Mỹ Khánh 1"},
+    "Vĩnh Phú": {"lat": 10.594444, "lng": 105.215278, "label": "tọa độ đại diện ấp Vĩnh Phú"},
+    "Châu Phong": {"lat": 10.715556, "lng": 105.146667, "label": "tọa độ đại diện khu vực Châu Phong"},
+    "Châu Phú": {"lat": 10.581000, "lng": 105.212000, "label": "tọa độ đại diện khu vực Châu Phú"},
+    "Vĩnh Thạnh Trung - Bình Mỹ": {"lat": 10.572917, "lng": 105.245556, "label": "tọa độ đại diện giữa Vĩnh Thạnh Trung và Bình Mỹ"}
+  }
+}

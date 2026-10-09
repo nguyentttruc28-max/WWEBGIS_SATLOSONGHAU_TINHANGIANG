@@ -1,0 +1,142 @@
+<!-- views/dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="map-page">
+<header class="titlebar">
+  <div class="title-main">WEB GIS QUẢN LÝ SẠT LỞ SÔNG HẬU</div>
+  <div class="title-sub">đoạn qua tỉnh An Giang</div>
+</header>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-brand">WEB GIS SẠT LỞ SÔNG HẬU</div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="/dashboard" class="nav-link active">Bản đồ</a></li>
+      <li class="nav-item"><a href="/overview" class="nav-link">Tổng quan</a></li>
+      <li class="nav-item"><a href="/data" class="nav-link">Dữ liệu</a></li>
+      <li class="nav-item"><a href="/guide" class="nav-link">Hướng dẫn</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="demoAccountBtn" class="nav-account" type="button">Đăng nhập</button>
+      <form method="POST" action="/logout"><button class="nav-logout" type="submit">Đăng xuất</button></form>
+    </div>
+  </div>
+  <div class="nav-search" role="search">
+    <input id="searchInput" type="search" placeholder="Tìm mã, địa bàn, mức độ sạt lở..." aria-label="Tìm kiếm sự kiện sạt lở">
+    <select id="riskSearch" aria-label="Lọc nhanh theo phân loại mức độ">
+      <option value="">Tất cả mức độ</option>
+      <option value="Đặc biệt nguy hiểm">Đặc biệt nguy hiểm</option>
+      <option value="Nguy hiểm">Nguy hiểm</option>
+      <option value="Bình thường">Bình thường</option>
+      <option value="Chưa phân loại">Chưa phân loại</option>
+    </select>
+  </div>
+</nav>
+
+<main class="map-layout">
+  <aside class="layer-panel">
+    <div class="panel-heading">
+      <div>
+        <span class="eyebrow">LỚP DỮ LIỆU</span>
+        <h2>Điều khiển bản đồ</h2>
+      </div>
+      <span id="resultCount" class="count-pill">0</span>
+    </div>
+
+    <section class="side-section compact-section management-section">
+      <div class="section-title">NHÓM QUẢN LÝ</div>
+      <div class="side-note">Tick nhóm nào để hiển thị biểu tượng của nhóm đó trên bản đồ.</div>
+      <label class="check-row"><input type="checkbox" id="toggleWorks"><span class="management-emoji legend-emoji">🚧</span><span>Công trình phòng, chống sạt lở</span></label>
+      <label class="check-row"><input type="checkbox" id="toggleResidential"><span class="management-emoji legend-emoji">🌆</span><span>Khu dân cư bị ảnh hưởng</span></label>
+      <label class="check-row"><input type="checkbox" id="toggleRoads"><span class="management-emoji legend-emoji">🛣️</span><span>Giao thông bị đe dọa</span></label>
+    </section>
+
+    <section class="side-section compact-section river-section">
+      <div class="section-title">LỚP SÔNG</div>
+      <label class="check-row"><input type="checkbox" id="toggleRiverHau"><span class="river-line-swatch"></span><span>Sông Hậu (lớp đường sông)</span></label>
+      <div class="side-note">Bật/tắt lớp đường Sông Hậu và một số phân lưu kết nối trên bản đồ.</div>
+    </section>
+
+    <section class="side-section compact-section">
+      <div class="section-title">PHÂN LOẠI HIỂN THỊ</div>
+      <div class="side-note risk-filter-note">Mỗi mục dưới đây chính là một loại điểm sạt lở trên bản đồ. Không chọn mục nào sẽ hiển thị tất cả loại.</div>
+      <label class="check-row"><input type="checkbox" class="risk-filter" value="Đặc biệt nguy hiểm"><span class="legend-dot very-high"></span><span>Đặc biệt nguy hiểm</span></label>
+      <label class="check-row"><input type="checkbox" class="risk-filter" value="Nguy hiểm"><span class="legend-dot high"></span><span>Nguy hiểm</span></label>
+      <label class="check-row"><input type="checkbox" class="risk-filter" value="Bình thường"><span class="legend-dot low"></span><span>Bình thường</span></label>
+      <label class="check-row"><input type="checkbox" class="risk-filter" value="Chưa phân loại"><span class="legend-dot unclassified"></span><span>Chưa phân loại</span></label>
+    </section>
+
+    <section class="side-section compact-section">
+      <div class="section-title">BẢN ĐỒ NỀN</div>
+      <select id="basemapSelect" class="control" aria-label="Chọn bản đồ nền">
+        <option value="street">Bản đồ đường phố</option>
+        <option value="satellite">Ảnh vệ tinh</option>
+      </select>
+      <div class="side-note basemap-note">Có thể chuyển đổi trực tiếp giữa ảnh vệ tinh và bản đồ đường phố.</div>
+    </section>
+
+    <section class="side-section compact-section">
+      <div class="section-title">DIỄN BIẾN THEO THỜI GIAN</div>
+      <div class="timeline-head"><span>2020</span><strong id="yearValue">2026</strong><span>2026</span></div>
+      <input type="range" id="yearSlider" min="2020" max="2026" value="2026" step="1" aria-label="Lọc theo năm">
+    </section>
+
+    <section class="side-section selected-section">
+      <div class="section-title">ĐIỂM ĐANG CHỌN</div>
+      <div id="selectedList" class="selected-list"><span class="side-note">Nhấp một điểm trên bản đồ để xem thông tin và chọn điểm.</span></div>
+    </section>
+
+    <button id="resetBtn" class="reset-btn" type="button">ĐẶT LẠI BỘ LỌC</button>
+    <p id="dataSourceNote" class="data-warning">Dữ liệu ưu tiên lấy từ PostgreSQL/PostGIS; nếu database chưa kết nối, hệ thống dùng bộ dữ liệu đi kèm để bản đồ vẫn hoạt động.</p>
+  </aside>
+
+  <section class="map-area">
+    <div id="map"></div>
+    <div class="map-title-card">
+      <span>WEBGIS QUẢN LÝ RỦI RO</span>
+      <strong>SẠT LỞ SÔNG HẬU</strong>
+      <small>Đoạn qua tỉnh An Giang</small>
+    </div>
+    <div class="map-tools">
+      <button id="fitBtn" type="button">Xem toàn bộ</button>
+      <button id="locateBtn" type="button">Về khu vực</button>
+    </div>
+
+
+    <div class="legend map-legend">
+      <strong>CHÚ GIẢI</strong>
+      <div><span class="legend-dot very-high"></span>Đặc biệt nguy hiểm</div>
+      <div><span class="legend-dot high"></span>Nguy hiểm</div>
+      <div><span class="legend-dot low"></span>Bình thường</div>
+      <div><span class="legend-dot unclassified"></span>Chưa phân loại</div>
+      <div class="legend-management"><span class="management-emoji legend-emoji">🚧</span>Công trình &nbsp; <span class="management-emoji legend-emoji">🌆</span>Dân cư &nbsp; <span class="management-emoji legend-emoji">🛣️</span>Giao thông</div>
+      <div class="legend-note">Phân loại lấy theo bộ dữ liệu V4.1. Không chọn mức độ nào sẽ hiển thị tất cả sự kiện; chọn mức nào thì chỉ các điểm thuộc mức đó được hiển thị. “Chưa phân loại” dùng màu hồng. Màu hiển thị là quy ước giao diện WebGIS, không phải mã màu pháp lý.</div>
+    </div>
+    <div id="mapStatus" class="map-status">Đang tải dữ liệu...</div>
+  </section>
+</main>
+
+<div id="accountModal" class="modal hidden">
+  <div class="modal-card">
+    <button id="closeModal" class="modal-close" type="button" aria-label="Đóng">×</button>
+    <h2>Tài khoản bản demo</h2>
+    <div class="demo-row"><span>Tên người đăng nhập</span><strong>demo123</strong></div>
+    <div class="demo-row"><span>Mật khẩu</span><strong>demo123</strong></div>
+    <div class="demo-row"><span>Chức năng</span><strong>Đổi mật khẩu</strong></div>
+    <p class="side-note">Khung này chỉ cung cấp thông tin tài khoản demo và không chỉnh sửa tài khoản.</p>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@3.0.15/dist/esri-leaflet.js"></script>
+<script src="/javaScript/map.js"></script>
+<script src="/javaScript/main.js"></script>
+</body>
+</html>

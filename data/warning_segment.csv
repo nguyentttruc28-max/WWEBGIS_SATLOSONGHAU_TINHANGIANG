@@ -1,0 +1,12 @@
+﻿id_warning_segment,warning_year,segment_name,commune,district_historical,id_warning_level,length_m,id_reference
+WS-2021-01,2021,Sông Hậu qua Châu Phong,Châu Phong,Tân Châu,WARN03,,REF019
+WS-2021-02,2021,Sông Hậu qua Bình Mỹ,Bình Mỹ,Châu Phú,WARN03,,REF019
+WS-2023-01,2023,Sông Hậu qua Châu Phong,Châu Phong,Tân Châu,WARN03,6900,REF020
+WS-2023-02,2023,Sông Hậu qua Bình Mỹ,Bình Mỹ,Châu Phú,WARN03,1900,REF020
+WS-2023-03,2023,Sông Hậu qua Mỹ Hòa Hưng,Mỹ Hòa Hưng,Long Xuyên,WARN03,3300,REF020
+WS-2024-01,2024,Sông Hậu qua Châu Phong,Châu Phong,Tân Châu,WARN03,,REF021
+WS-2024-02,2024,Sông Hậu qua Bình Mỹ,Bình Mỹ,Châu Phú,WARN03,,REF021
+WS-2024-03,2024,Sông Hậu qua Mỹ Hòa Hưng,Mỹ Hòa Hưng,Long Xuyên,WARN03,,REF021
+WS-2025-01,2025,Sông Hậu qua Châu Phong,Châu Phong,Tân Châu,WARN03,,REF022
+WS-2025-02,2025,Sông Hậu qua Bình Mỹ,Bình Mỹ,Châu Phú,WARN03,,REF022
+WS-2025-03,2025,Sông Hậu qua Mỹ Hòa Hưng,Mỹ Hòa Hưng,Long Xuyên,WARN03,,REF022

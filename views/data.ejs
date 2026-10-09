@@ -1,0 +1,34 @@
+<!-- views/data.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title><%= title %></title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header class="titlebar"><div class="title-main">WEB GIS QUẢN LÝ SẠT LỞ SÔNG HẬU</div><div class="title-sub">đoạn qua tỉnh An Giang</div></header>
+<nav class="navbar"><div class="nav-container"><div class="nav-brand">WEB GIS SẠT LỞ SÔNG HẬU</div><ul class="nav-menu"><li><a class="nav-link" href="/overview">Tổng quan</a></li><li><a class="nav-link active" href="/data">Dữ liệu</a></li><li><a class="nav-link" href="/guide">Hướng dẫn</a></li><li><a class="nav-link" href="/dashboard">Bản đồ</a></li></ul><form method="POST" action="/logout"><button class="nav-logout" type="submit">Đăng xuất</button></form></div></nav>
+<main class="content-page">
+ <div class="page-heading"><div><span class="eyebrow">DỮ LIỆU</span><h1>Danh mục các điểm/đoạn sạt lở</h1><p>17 sự kiện sạt lở nguồn công khai 2020–2026 theo bộ dữ liệu V4.1, trong đó phân loại mức độ gồm 7 “Đặc biệt nguy hiểm”, 7 “Nguy hiểm”, 1 “Bình thường” và 2 “Chưa phân loại”.</p></div></div>
+ <div class="content-card"><h2>Biểu đồ diễn biến số sự kiện theo năm</h2><div class="large-chart small"><canvas id="dataYear"></canvas></div></div>
+ <div id="dataCards" class="data-cards"></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+async function loadData(){
+ const data=await fetch('/api/satlo-data').then(r=>r.json());
+ Chart.defaults.font.family='Arial';
+ const years=[2020,2021,2022,2023,2024,2025,2026];
+ new Chart(document.getElementById('dataYear'),{type:'line',data:{labels:years,datasets:[{label:'Số bản ghi',data:years.map(y=>data.filter(d=>Number(d.year)===y).length),tension:.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false}});
+ document.getElementById('dataCards').innerHTML=data.map(d=>`
+ <article class="data-card large">
+  <div class="data-card-top"><b>${d.id}</b><span class="risk-tag ${d.risk==='Đặc biệt nguy hiểm'?'risk-red':d.risk==='Nguy hiểm'?'risk-orange':d.risk==='Bình thường'?'risk-green':'risk-pink'}">${d.risk}</span></div>
+  <h3>${d.viTri}</h3>
+  <p><b>Địa bàn:</b> ${d.xa}, ${d.huyen}</p>
+  <p><b>Năm:</b> ${d.year} &nbsp; <b>Chiều dài:</b> ${d.length===null?'Chưa công bố':Number(d.length).toFixed(3)+' km'}</p><p><b>Trạng thái tọa độ:</b> ${d.coordinateStatus||'Chưa công bố'}</p>
+  <p><b>Hộ ảnh hưởng:</b> ${d.households??'Chưa công bố'}</p>
+  <p class="classification-note">Mức hiển thị lấy trực tiếp từ trường <b>severity_level</b> của bộ dữ liệu V4.1. Điểm số, cơ sở phân loại, độ tin cậy và bằng chứng được lấy từ các bảng severity_assessment/severity_indicator. Đây là phân loại phân tích phục vụ nghiên cứu/WebGIS, không phải cấp độ rủi ro thiên tai pháp lý.</p><p class="source-text">${d.source}</p>
+  <a href="${d.sourceUrl}" target="_blank" rel="noopener">Mở nguồn gốc</a>
+ </article>`).join('');
+}
+loadData();
+</script>
+</body>
+</html>

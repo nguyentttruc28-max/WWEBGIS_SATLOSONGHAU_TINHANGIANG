@@ -1,0 +1,21 @@
+﻿indicator_id,indicator_name,condition,score_max_or_value,role
+IND01,Chiều dài đoạn sạt lở,<20 m,5,Chỉ báo quy mô
+IND01,Chiều dài đoạn sạt lở,20–49 m,10,Chỉ báo quy mô
+IND01,Chiều dài đoạn sạt lở,50–99 m,18,Chỉ báo quy mô
+IND01,Chiều dài đoạn sạt lở,≥100 m,25,Chỉ báo quy mô
+IND02,Mức ăn sâu vào bờ,<3 m,5,Chỉ báo mức độ xâm thực
+IND02,Mức ăn sâu vào bờ,3–<5 m,10,Chỉ báo mức độ xâm thực
+IND02,Mức ăn sâu vào bờ,5–<10 m,15,Chỉ báo mức độ xâm thực
+IND02,Mức ăn sâu vào bờ,≥10 m,20,Chỉ báo mức độ xâm thực
+IND03,Hộ dân bị ảnh hưởng,0,0,Chỉ báo phơi nhiễm dân cư
+IND03,Hộ dân bị ảnh hưởng,1–2,8,Chỉ báo phơi nhiễm dân cư
+IND03,Hộ dân bị ảnh hưởng,3–5,15,Chỉ báo phơi nhiễm dân cư
+IND03,Hộ dân bị ảnh hưởng,6–10,20,Chỉ báo phơi nhiễm dân cư
+IND03,Hộ dân bị ảnh hưởng,>10,25,Chỉ báo phơi nhiễm dân cư
+IND04,Hạ tầng giao thông,Không ghi nhận,0,Chỉ báo hạ tầng
+IND04,Hạ tầng giao thông,Có nguy cơ/ở gần,10,Chỉ báo hạ tầng
+IND04,Hạ tầng giao thông,Ảnh hưởng trực tiếp/sụp,20,Chỉ báo hạ tầng
+IND05,Di dời/sụp đổ/diễn biến mạnh,Không có thông tin,0,Chỉ báo hậu quả/diễn biến
+IND05,Di dời/sụp đổ/diễn biến mạnh,Có dấu hiệu,3,Chỉ báo hậu quả/diễn biến
+IND05,Di dời/sụp đổ/diễn biến mạnh,Đang xảy ra/ảnh hưởng rõ,6,Chỉ báo hậu quả/diễn biến
+IND05,Di dời/sụp đổ/diễn biến mạnh,Di dời khẩn cấp/sụp đổ/recurrent mạnh,10,Chỉ báo hậu quả/diễn biến

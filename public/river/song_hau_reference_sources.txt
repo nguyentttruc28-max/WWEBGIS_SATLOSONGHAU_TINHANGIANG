@@ -1,0 +1,7 @@
+LỚP SÔNG HẬU THAM CHIẾU
+
+Nguồn 1: Thông tư 17/2017/TT-BTNMT – Danh mục địa danh dân cư, sơn văn, thủy văn, kinh tế - xã hội phục vụ thành lập bản đồ tỉnh An Giang.
+Nguồn 2: Vu et al. (2024), The Composition of Rotifers and Their Response to Environmental Factors Along the Hau River, Vietnam – Supplemental Table 1, các điểm Châu Đốc, Vàm Nao, Long Xuyên.
+
+Mục đích: đường Sông Hậu tham chiếu để trực quan hóa trên WebGIS.
+Lưu ý: đây là đường trung tâm tham chiếu được biên tập từ các điểm/đầu mút công bố; không dùng như dữ liệu đo đạc hiện trường, ranh giới lòng sông hoặc cơ sở pháp lý về hành lang sông.

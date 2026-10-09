@@ -1,0 +1,18 @@
+﻿incident_code,severity_level,severity_score,evidence_summary,classification_basis,confidence,note
+SLH-2020-001,Nguy hiểm,55,40 m; mất khoảng 1/3 mặt đường QL91,Quy mô + ảnh hưởng hạ tầng,Trung bình,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2021-001,Đặc biệt nguy hiểm,85,50 m; ăn sâu 60 m; 3 hộ; di dời khẩn cấp,Quy mô + mức độ ảnh hưởng dân cư + di dời,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2022-001,Nguy hiểm,55,30 m; ăn sâu 4 m; ảnh hưởng trực tiếp 2 nhà,Quy mô + ảnh hưởng nhà dân,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2023-001,Đặc biệt nguy hiểm,75,70 m; ăn sâu 10 m; ảnh hưởng cơ sở sản xuất,Quy mô + ảnh hưởng công trình,Trung bình,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2023-002,Đặc biệt nguy hiểm,72,100 m; có nguy cơ/ảnh hưởng gần đường giao thông,Quy mô + hạ tầng,Trung bình,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2024-001,Nguy hiểm,48,40 m; ăn sâu 3 m; 1 hộ; đường cách khoảng 20 m,Quy mô + dân cư + hạ tầng,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2024-002,Nguy hiểm,55,7 hộ bị ảnh hưởng; có tọa độ theo báo cáo chính thức,Số hộ + nguồn chính thức,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2024-003,Bình thường,25,9 m; ăn sâu 3 m; 1 nhà bị ảnh hưởng,Quy mô + ảnh hưởng hạn chế,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2025-001,Đặc biệt nguy hiểm,78,100 m; ăn sâu 25 m; 2 nhà sụp hoàn toàn,Quy mô + mức độ thiệt hại,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2025-002,Đặc biệt nguy hiểm,95,150 m; ăn sâu 20 m; 12 hộ/44 người; đường sụp hoàn toàn,Quy mô + dân cư + hạ tầng,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2025-003,Đặc biệt nguy hiểm,98,"150 m; 13 nhà; 5 nhà sập, 8 hộ di dời",Quy mô + thiệt hại + di dời,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2025-004,Chưa phân loại,,Chỉ ghi nhận điểm được đoàn khảo sát; chưa có đủ thông tin định lượng/thiệt hại,Thiếu dữ liệu đầu vào,Thấp,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2025-005,Chưa phân loại,,Chỉ ghi nhận điểm được đoàn khảo sát; chưa có đủ thông tin định lượng/thiệt hại,Thiếu dữ liệu đầu vào,Thấp,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2026-001,Nguy hiểm,60,50 m; sụp bờ kè và 2 băng tải; nguồn trong bộ dữ liệu đang cần đối chiếu,Ảnh hưởng hạ tầng + dữ liệu cần kiểm chứng,Thấp,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2026-002,Nguy hiểm,65,60 m; ăn sâu 3–7 m; 6 hộ có nguy cơ; gần đường,Quy mô + dân cư + hạ tầng,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2026-003,Nguy hiểm,68,50 m; ăn sâu 7 m; 8 hộ/21 người; ảnh hưởng trực tiếp đường,Quy mô + dân cư + hạ tầng,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.
+SLH-2026-004,Đặc biệt nguy hiểm,80,50 m; ăn sâu 5 m; 4 hộ/16 người; 2 hộ tháo dỡ nhà; ảnh hưởng đường,Dân cư + tháo dỡ nhà + hạ tầng,Cao,Không dùng làm cấp độ rủi ro thiên tai pháp lý; chỉ là phân loại phục vụ nghiên cứu/WebGIS.

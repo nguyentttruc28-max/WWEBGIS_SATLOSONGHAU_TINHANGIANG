@@ -1,0 +1,12 @@
+﻿id_residential,incident_code,households,persons,impact_status,id_reference
+RES001,SLH-2021-001,3,,Di dời khẩn cấp,REF001
+RES002,SLH-2022-001,2,,Ảnh hưởng trực tiếp,REF002
+RES003,SLH-2024-001,1,,Có khả năng ảnh hưởng,REF005
+RES004,SLH-2024-002,7,,Ảnh hưởng,REF006
+RES005,SLH-2024-003,1,,Ảnh hưởng,REF007
+RES006,SLH-2025-001,2,,Sụp hoàn toàn,REF008
+RES007,SLH-2025-002,12,44,Ảnh hưởng trực tiếp,REF009
+RES008,SLH-2025-003,13,,5 sập; 8 di dời,REF010
+RES009,SLH-2026-002,6,,Có nguy cơ ảnh hưởng,REF013
+RES010,SLH-2026-003,8,21,Ảnh hưởng trực tiếp,REF014
+RES011,SLH-2026-004,4,16,Ảnh hưởng trực tiếp; 2 hộ tháo dỡ,REF015

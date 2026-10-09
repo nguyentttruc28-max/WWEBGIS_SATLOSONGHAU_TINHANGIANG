@@ -1,0 +1,50 @@
+<!-- views/overview.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= title %></title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="titlebar"><div class="title-main">WEB GIS QUẢN LÝ SẠT LỞ SÔNG HẬU</div><div class="title-sub">đoạn qua tỉnh An Giang</div></header>
+<nav class="navbar"><div class="nav-container"><div class="nav-brand">WEB GIS SẠT LỞ SÔNG HẬU</div><ul class="nav-menu"><li><a class="nav-link active" href="/overview">Tổng quan</a></li><li><a class="nav-link" href="/dashboard">Bản đồ</a></li><li><a class="nav-link" href="/data">Dữ liệu</a></li><li><a class="nav-link" href="/guide">Hướng dẫn</a></li></ul><form method="POST" action="/logout"><button class="nav-logout" type="submit">Đăng xuất</button></form></div></nav>
+<main class="content-page">
+  <div class="page-heading"><div><span class="eyebrow">TỔNG QUAN</span><h1>Thống kê sạt lở theo lựa chọn</h1><p>Chọn điểm trên bản đồ để thống kê riêng; nếu không chọn, hệ thống tính toàn bộ dữ liệu.</p></div><a class="primary-link" href="/dashboard">Mở bản đồ</a></div>
+  <section class="stats-grid">
+    <div class="stat-card"><span>Tổng điểm</span><strong id="ovTotal">0</strong><small>điểm theo lựa chọn</small></div>
+    <div class="stat-card"><span>Tổng chiều dài</span><strong id="ovLength">0 km</strong><small>đoạn có số liệu chiều dài</small></div>
+    <div class="stat-card"><span>Nguy cơ cao+</span><strong id="ovHigh">0</strong><small>Nguy hiểm và Đặc biệt nguy hiểm</small></div>
+    <div class="stat-card"><span>Hộ ảnh hưởng</span><strong id="ovHouseholds">0</strong><small>chỉ cộng khi nguồn công bố</small></div>
+  </section>
+  <section class="chart-grid">
+    <div class="content-card"><h2>Phân bố mức độ sạt lở</h2><div class="large-chart"><canvas id="ovRisk"></canvas></div></div>
+    <div class="content-card"><h2>Diễn biến theo năm</h2><div class="large-chart"><canvas id="ovYear"></canvas></div></div>
+  </section>
+  <section class="content-card"><h2>Các điểm đang được thống kê</h2><div id="ovSelected" class="data-cards"></div></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+async function loadOverview(){
+ const data=await fetch('/api/satlo-data').then(r=>r.json());
+ const selected=JSON.parse(localStorage.getItem('webgisSelected')||'[]');
+ const chosen=selected.length?data.filter(d=>selected.includes(d.id)):data;
+ const len=chosen.reduce((s,d)=>s+(Number(d.length)||0),0);
+ const high=chosen.filter(d=>d.risk==='Nguy hiểm'||d.risk==='Đặc biệt nguy hiểm').length;
+ const hh=chosen.reduce((s,d)=>s+(Number(d.households)||0),0);
+ document.getElementById('ovTotal').textContent=chosen.length;
+ document.getElementById('ovLength').textContent=len.toFixed(3)+' km';
+ document.getElementById('ovHigh').textContent=high;
+ document.getElementById('ovHouseholds').textContent=hh;
+ const labels=['Đặc biệt nguy hiểm','Nguy hiểm','Bình thường','Chưa phân loại'];
+ const counts=labels.map(x=>chosen.filter(d=>d.risk===x).length);
+ const years=[2020,2021,2022,2023,2024,2025,2026];
+ const yc=years.map(y=>chosen.filter(d=>Number(d.year)===y).length);
+ Chart.defaults.font.family='Arial';
+ new Chart(document.getElementById('ovRisk'),{type:'doughnut',data:{labels,datasets:[{data:counts}]},options:{responsive:true,maintainAspectRatio:false}});
+ new Chart(document.getElementById('ovYear'),{type:'line',data:{labels:years,datasets:[{label:'Số điểm',data:yc,tension:.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false}});
+ document.getElementById('ovSelected').innerHTML=chosen.map(d=>`<article class="data-card"><b>${d.id}</b><strong>${d.viTri}</strong><span>${d.risk} · ${d.year}</span></article>`).join('')||'<p>Không có dữ liệu.</p>';
+}
+loadOverview();
+</script>
+</body>
+</html>

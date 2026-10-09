@@ -1,0 +1,3 @@
+﻿id_link,incident_code,id_warning_segment,relation_type,note,id_reference
+LINK001,SLH-2020-001,WS-2024-02,"Liên hệ không gian, không hồi tố",Khu vực Bình Mỹ thuộc đoạn cảnh báo; không gán mức 2024 cho vụ 2020,REF018
+LINK002,SLH-2026-004,WS-2025-03,"Liên hệ không gian, không hồi tố",Khu vực Mỹ Hòa Hưng; không gán mức 2025 cho vụ 2026,REF015

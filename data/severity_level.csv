@@ -1,0 +1,5 @@
+﻿id_severity,severity_name,score_min,score_max,description
+SEV01,Bình thường,0,39,Quy mô/ảnh hưởng thấp trong phạm vi dữ liệu có đủ chỉ tiêu.
+SEV02,Nguy hiểm,40,69,"Có bằng chứng đáng kể về quy mô, dân cư hoặc hạ tầng bị ảnh hưởng/đe dọa."
+SEV03,Đặc biệt nguy hiểm,70,100,"Có bằng chứng về quy mô lớn và/hoặc thiệt hại, di dời, sụp đổ hạ tầng/nhà dân đáng kể."
+SEV99,Chưa phân loại,,,Chưa đủ dữ liệu để phân loại một cách đáng tin cậy.

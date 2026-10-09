@@ -1,0 +1,29 @@
+<!-- views/hsng.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title><%= title %></title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header class="titlebar"><div class="title-main">WEB GIS QUẢN LÝ SẠT LỞ SÔNG HẬU</div><div class="title-sub">đoạn qua tỉnh An Giang</div></header>
+<nav class="navbar"><div class="nav-container"><div class="nav-brand">WEB GIS SẠT LỞ SÔNG HẬU</div><ul class="nav-menu"><li><a class="nav-link" href="/overview">Tổng quan</a></li><li><a class="nav-link" href="/data">Dữ liệu</a></li><li><a class="nav-link active" href="/guide">Hướng dẫn</a></li><li><a class="nav-link" href="/dashboard">Bản đồ</a></li></ul><form method="POST" action="/logout"><button class="nav-logout" type="submit">Đăng xuất</button></form></div></nav>
+<main class="content-page">
+<div class="guide-grid">
+ <article class="content-card"><h2>1. Đăng nhập</h2><p>Truy cập WebGIS sẽ chuyển đến trang đăng nhập. Dùng tài khoản demo <b>demo123</b> và mật khẩu <b>demo123</b>.</p></article>
+ <article class="content-card"><h2>2. Lớp dữ liệu</h2><p>Các mức “Đặc biệt nguy hiểm”, “Nguy hiểm”, “Bình thường” và “Chưa phân loại” chính là các nhóm điểm sạt lở để lọc hiển thị; ngoài ra có các nhóm quản lý về công trình, khu dân cư và giao thông. Nhóm trạng thái công trình cũng có thể lọc riêng.</p></article>
+ <article class="content-card"><h2>3. Tìm kiếm</h2><p>Ô tìm kiếm nhỏ nằm ở thanh navy cho phép tìm theo mã, địa bàn hoặc nội dung tên đoạn. Bộ chọn kế bên lọc theo mức độ.</p></article>
+ <article class="content-card"><h2>4. Chọn điểm và thống kê</h2><p>Nhấp vào điểm trên bản đồ để chọn. Danh sách lựa chọn được lưu tạm trên trình duyệt; trang Tổng quan sẽ tính thống kê theo các điểm đã chọn.</p></article>
+</div>
+<section class="content-card"><h2>5. Các nhóm quản lý</h2><p><b>Công trình phòng, chống sạt lở:</b> các dự án/công trình được nguồn chính thống xác nhận trong bộ dữ liệu V4.1; trạng thái được lấy trực tiếp từ trường status.</p><p><b>Khu dân cư bị ảnh hưởng:</b> chỉ đưa các khu vực có nguồn công bố trong bộ dữ liệu V4.1 về số hộ/căn nhà bị ảnh hưởng hoặc có nguy cơ.</p><p><b>Giao thông bị đe dọa:</b> chỉ hiển thị khi nguồn chính thống nêu rõ ảnh hưởng đến tuyến đường hoặc việc gia cố nhằm bảo vệ giao thông.</p><p><b>Nguyên tắc:</b> nếu nguồn không cung cấp GPS, bản đồ dùng tọa độ đại diện và ghi rõ trong popup; không coi đó là tọa độ đo đạc hiện trường.</p></section>
+<section class="content-card"><h2>6. Luồng dữ liệu</h2><pre>Người dùng → Frontend EJS/JavaScript → API Express → PostgreSQL/PostGIS → JSON → Leaflet/Chart.js</pre><p>Cấu trúc này bám khung tài liệu hướng dẫn: <b>views/</b> cho giao diện, <b>public/</b> cho tài nguyên tĩnh, <b>app.js</b> cho backend và route/API, <b>.env</b> cho DATABASE_URL.</p></section>
+<section class="content-card"><h2>7. Nguồn lớp sông</h2><p>Lớp thủy văn tham chiếu sử dụng nguồn HydroSHEDS/HydroRIVERS; bộ shapefile châu Á được công bố chính thức trên HydroSHEDS. Trong trình duyệt, bản đồ dùng lớp tham chiếu dựa trên HydroRIVERS để tránh tự vẽ một đường sông giả lập.</p><p><a href="https://www.hydrosheds.org/products/hydrorivers" target="_blank" rel="noopener">Trang HydroRIVERS chính thức</a></p><p><a href="https://data.hydrosheds.org/file/HydroRIVERS/HydroRIVERS_v10_as_shp.zip" target="_blank" rel="noopener">Tải HydroRIVERS Asia Shapefile</a></p></section>
+
+<article class="content-card">
+  <h2>8. Cơ sở dữ liệu V4 và nguyên tắc cảnh báo</h2>
+  <p><b>satlo_incident</b> lưu các sự kiện sạt lở thực tế. V4.1 bổ sung các trường <b>severity_level</b>, <b>severity_score</b>, <b>classification_basis</b>, <b>classification_confidence</b>, <b>classification_evidence</b> và <b>classification_method</b> để phục vụ phân loại mức độ hiển thị trên WebGIS.</p>
+  <p><b>severity_level</b> gồm “Bình thường”, “Nguy hiểm”, “Đặc biệt nguy hiểm” và “Chưa phân loại”. V4.1 ghi rõ đây là phân loại phân tích của đề tài, không phải cấp độ rủi ro thiên tai pháp lý. <b>warning_level</b> và <b>warning_segment</b> vẫn được giữ riêng để lưu thông tin cảnh báo chính thức theo nguồn.</p>
+  <p><b>Nguyên tắc tọa độ:</b> WebGIS không sửa các trường tọa độ nguồn của V4.1. Khi nguồn không công bố GPS, giao diện sử dụng <b>tọa độ đại diện theo địa bàn</b> từ tệp <b>data/display_coordinates.json</b> để điểm dữ liệu và các nhóm quản lý vẫn có thể được trực quan hóa và bộ lọc đồng bộ với bản đồ. Popup luôn ghi rõ đây là tọa độ đại diện, không phải tọa độ đo đạc hiện trường.</p>
+  <p class="source-text">Căn cứ pháp lý được lưu trong bảng <b>legal_basis</b> và bảng nguồn <b>reference_source</b>, trong đó có Quyết định 01/2011/QĐ-TTg và Quyết định 18/2021/QĐ-TTg.</p>
+</article>
+
+</main>
+</body>
+</html>
